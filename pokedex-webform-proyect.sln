@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.36631.11
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pokedex.Webform", "Pokedex.Webform\Pokedex.Webform.csproj", "{784107DE-8733-4355-9F26-3379C8FAA4DD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dominio", "Dominio\Dominio.csproj", "{F33693A1-19BA-4340-9C9A-743ABDDFDF5F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Negocio", "Negocio\Negocio.csproj", "{23DB3747-42FD-4DB1-A5ED-B04DA239451E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{784107DE-8733-4355-9F26-3379C8FAA4DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{784107DE-8733-4355-9F26-3379C8FAA4DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{784107DE-8733-4355-9F26-3379C8FAA4DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{784107DE-8733-4355-9F26-3379C8FAA4DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F33693A1-19BA-4340-9C9A-743ABDDFDF5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F33693A1-19BA-4340-9C9A-743ABDDFDF5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F33693A1-19BA-4340-9C9A-743ABDDFDF5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F33693A1-19BA-4340-9C9A-743ABDDFDF5F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23DB3747-42FD-4DB1-A5ED-B04DA239451E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23DB3747-42FD-4DB1-A5ED-B04DA239451E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23DB3747-42FD-4DB1-A5ED-B04DA239451E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23DB3747-42FD-4DB1-A5ED-B04DA239451E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2A08F5AA-28AF-43E7-BD55-7810A4D5FC5E}
+	EndGlobalSection
+EndGlobal
