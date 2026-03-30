@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using negocio;
+using dominio;
 
 namespace Pokedex.Webform
 {
@@ -11,6 +13,12 @@ namespace Pokedex.Webform
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                PokemonNegocio pokemonNegocio = new PokemonNegocio();
+                dgvPokemons.DataSource = pokemonNegocio.listarConSp();
+                dgvPokemons.DataBind();
+            }
 
         }
     }

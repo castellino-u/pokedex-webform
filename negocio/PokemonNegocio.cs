@@ -13,9 +13,52 @@ namespace negocio
 {
     public class PokemonNegocio
     {
-        //Esta es la clase que me va a permitir conectarme con mi base de datos
-        //Acá yo voy a crear los métodos de acceso a datos para los pokemons de la base de datos
+        public List<Pokemon> listarConSp()
+        {
+            List<Pokemon> listaPokemon = new List<Pokemon>();
+            AccesoDatos datos = new AccesoDatos();
 
+            try
+            {
+                datos.setearProcedimiento("storedListar");
+                datos.ejecutarLectura();
+                while (datos.Lector.Read()) //Si hay un objeto en la base de datos, o sea, algo que leyó el select, esto me va a dar true y va a entrar al while, si no leyó nada, va a dar false y se va a salir
+                {
+                    Pokemon aux = new Pokemon();
+                    aux.Estado = (bool)datos.Lector["Activo"];
+                    aux.Id = (int)datos.Lector["Id"];
+                    aux.Numero = (int)datos.Lector["Numero"];  //esta es una forma de mapear el objeto y 
+                    aux.Nombre = (string)datos.Lector["Nombre"];
+                    aux.Descripcion = (string)datos.Lector["Descripcion"];
+
+                    if (!(datos.Lector["UrlImagen"] is DBNull))
+                    {
+                        aux.UrlImagen = (string)datos.Lector["UrlImagen"];
+                    }
+
+                    aux.Tipo = new Elemento();
+                    aux.Tipo.Id = (int)datos.Lector["IdTipo"];
+                    aux.Tipo.Descripcion = (string)datos.Lector["Tipo"];
+
+                    aux.Debilidad = new Elemento();
+                    aux.Debilidad.Id = (int)datos.Lector["IdDebilidad"];
+                    aux.Debilidad.Descripcion = (string)datos.Lector["Debilidad"];
+
+                    listaPokemon.Add(aux);
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+            return listaPokemon;
+        }
         public List<Pokemon> Listar()
         {
             //Acá vamos vamos a establecer la configuración inicial para poder conectarnos a la base de datos

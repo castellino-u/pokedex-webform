@@ -9,12 +9,10 @@ namespace negocio
 {
     public class AccesoDatos
     {
-        //acá vamos a declarar los objetos que necesitamos para establecer una conexión 
         //para establecer una conexión necesitamos 3 cosas, establecer una cadena de conexión
         //establecer un comando
         //y un objeto slq data reader
 
-        //declaramos los objetos vacíos y como atributos de la propia clase
 
         private SqlConnection conexion;
         private SqlCommand comando;
@@ -44,6 +42,12 @@ namespace negocio
         {
             comando.CommandType = System.Data.CommandType.Text;
             comando.CommandText = consulta;
+        }
+
+        public void setearProcedimiento(string sp)
+        {
+            comando.CommandType = System.Data.CommandType.StoredProcedure;
+            comando.CommandText = sp;
         }
 
         //ejecutamos la lectura
