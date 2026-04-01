@@ -16,6 +16,7 @@
                 ControlStyle-Height="80px" 
                 ItemStyle-HorizontalAlign="Center" 
                 />
+            
         </Columns>
     </asp:GridView>
 </asp:Content>

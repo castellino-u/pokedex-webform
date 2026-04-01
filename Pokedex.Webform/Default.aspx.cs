@@ -4,14 +4,21 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using negocio;
+using dominio;
 
 namespace Pokedex.Webform
 {
     public partial class Default : System.Web.UI.Page
     {
+        public List<Pokemon> ListaPokemon { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                PokemonNegocio pokemonNegocio = new PokemonNegocio();
+                ListaPokemon = pokemonNegocio.listarConSp();
+            }
         }
     }
 }
