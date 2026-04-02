@@ -18,7 +18,14 @@ namespace Pokedex.Webform
             {
                 PokemonNegocio pokemonNegocio = new PokemonNegocio();
                 ListaPokemon = pokemonNegocio.listarConSp();
+                reRepetidor.DataSource = ListaPokemon;
+                reRepetidor.DataBind();
             }
+        }
+
+        protected void btnEjemplo_Click(object sender, EventArgs e)
+        {
+            string valor = ((Button)sender).CommandArgument;
         }
     }
 }
