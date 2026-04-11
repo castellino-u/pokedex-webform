@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using negocio;
+using dominio;
 
 namespace Pokedex.Webform
 {
@@ -11,12 +13,35 @@ namespace Pokedex.Webform
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            txtId.Enabled = false;
+            if (!IsPostBack)
+            {
+                ElementoNegocio elementoNegocio = new ElementoNegocio();
+                List<Elemento> lista = elementoNegocio.listar();
 
+                ddlDebilidad.DataSource = lista;
+                ddlDebilidad.DataTextField = "Descripcion";
+                ddlDebilidad.DataValueField = "Id";
+                ddlDebilidad.DataBind();
+
+                //dropdownlist tipo
+
+                ddlTipo.DataSource = lista;
+                ddlTipo.DataTextField = "Descripcion";
+                ddlTipo.DataValueField = "Id";
+                ddlTipo.DataBind();
+
+            }
         }
 
         protected void btnAgregar_Click(object sender, EventArgs e)
         {
 
+        }
+
+        protected void txtUrlImagen_TextChanged(object sender, EventArgs e)
+        {
+            ImgPokemon.ImageUrl = txtImagenUrl.Text;
         }
     }
 }
