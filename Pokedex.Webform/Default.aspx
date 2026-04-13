@@ -31,24 +31,24 @@
             }
         %>--%>
 
-    <%--Ahora vamos a probar una estructura nueva, un repetidor de asp--%>
-    <asp:Repeater runat="server" ID="reRepetidor">
-        <ItemTemplate>  
-            <div class="col">
-                <div class="card">
-                    <img src="<%#Eval("UrlImagen")%>" class="card-img-top w-50 m-auto" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title"><%#Eval("Nombre")%></h5>
-                        <p class="card-text"><%#Eval("Descripcion")%></p>
-                        <a href="DetallePokemon.aspx?id=<%#Eval("Id")%>" class="btn btn-primary">Ver Detalle</a>
-                        <asp:Button Text="Ejemplo" runat="server" ID="btnEjemplo" CssClass="btn btn-secondary" CommandArgument='<%#Eval("Id")%>' CommandName="PokemonId" OnClick="btnEjemplo_Click" />
+        <%--Ahora vamos a probar una estructura nueva, un repetidor de asp--%>
+        <asp:Repeater runat="server" ID="reRepetidor">
+            <ItemTemplate>
+                <div class="col">
+                    <div class="card">
+                        <img src="<%#Eval("UrlImagen")%>" class="card-img-top w-50 m-auto" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title"><%#Eval("Nombre")%></h5>
+                            <p class="card-text"><%#Eval("Descripcion")%></p>
+                            <a href="DetallePokemon.aspx?id=<%#Eval("Id")%>" class="btn btn-primary">Ver Detalle</a>
+                            <asp:Button Text="Ejemplo" runat="server" ID="btnEjemplo" CssClass="btn btn-secondary" CommandArgument='<%#Eval("Id")%>' CommandName="PokemonId" OnClick="btnEjemplo_Click" />
+                        </div>
+
                     </div>
-
                 </div>
-            </div>
 
-        </ItemTemplate>
-    </asp:Repeater>
+            </ItemTemplate>
+        </asp:Repeater>
 
     </div>
 

@@ -42,7 +42,7 @@
         <div class="col-6">
             <div class="mb-3">
                 <label for="txtDescripcion" class="form-label">Descripción</label>
-                <asp:TextBox runat="server" ID="TextBox1" TextMode="MultiLine" class="form-control" />
+                <asp:TextBox runat="server" ID="txtDescripcion" TextMode="MultiLine" class="form-control" />
             </div>
 
             <asp:UpdatePanel runat="server">

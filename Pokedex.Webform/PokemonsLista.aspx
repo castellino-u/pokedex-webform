@@ -5,8 +5,8 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <h1>Lista de Pokemons</h1>
-    <asp:GridView runat="server" ID="dgvPokemons" CssClass="table " AutoGenerateColumns="false" OnSelectedIndexChanged="dgvPokemons_SelectedIndexChanged" 
-        DataKeyNames="Id" AllowPaging="true" PageSize="5" OnPageIndexChanging="dgvPokemons_PageIndexChanging">
+    <asp:GridView runat="server" ID="dgvPokemons" CssClass="table" AutoGenerateColumns="false" OnSelectedIndexChanged="dgvPokemons_SelectedIndexChanged" 
+        DataKeyNames="Id" AllowPaging="true" PageSize="5" OnPageIndexChanging="dgvPokemons_PageIndexChanging" >
         <Columns>
             <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
             <asp:BoundField HeaderText="Tipo" DataField="Tipo.Descripcion" />
