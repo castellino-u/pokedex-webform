@@ -127,7 +127,7 @@ namespace negocio
                     aux.Descripcion = (string)lector["Descripcion"];
 
                     //Acá se rompe porque puede que la urlimagen puede que sea nula
-                    
+
                     if (!(lector["UrlImagen"] is DBNull))
                     {
                         aux.UrlImagen = (string)lector["UrlImagen"];
@@ -202,6 +202,34 @@ namespace negocio
             }
         }
 
+        public void agregarConSP(Pokemon nuevo)
+        {
+            AccesoDatos accesoDatos = new AccesoDatos();
+            try
+            {
+                
+                accesoDatos.setearProcedimiento("storedAltaPokemon");
+                accesoDatos.setearParametros("@numero", nuevo.Numero);
+                accesoDatos.setearParametros("@nombre", nuevo.Nombre);
+                accesoDatos.setearParametros("@descripcion", nuevo.Descripcion);
+                accesoDatos.setearParametros("@img", nuevo.UrlImagen);
+                accesoDatos.setearParametros("@idTipo", nuevo.Tipo.Id);
+                accesoDatos.setearParametros("@idDebilidad", nuevo.Debilidad.Id);
+
+                accesoDatos.ejecutarAccion();
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+        }
+
 
         public void modificar(Pokemon modificado)
         {
@@ -209,12 +237,12 @@ namespace negocio
             try
             {
                 datos.setearConsulta("Update POKEMONS set Numero = @numero, Nombre = @nombre, Descripcion = @desc, UrLImagen = @urlImagen, IdTipo = @idTipo, IdDebilidad = @idDebilidad where Id = @id;");
-                datos.setearParametros("@numero", modificado.Numero );
-                datos.setearParametros("@nombre", modificado.Nombre );
-                datos.setearParametros("@desc", modificado.Descripcion );
-                datos.setearParametros("@urlImagen", modificado.UrlImagen );
-                datos.setearParametros("@idTipo", modificado.Tipo.Id );
-                datos.setearParametros("@idDebilidad", modificado.Debilidad.Id );
+                datos.setearParametros("@numero", modificado.Numero);
+                datos.setearParametros("@nombre", modificado.Nombre);
+                datos.setearParametros("@desc", modificado.Descripcion);
+                datos.setearParametros("@urlImagen", modificado.UrlImagen);
+                datos.setearParametros("@idTipo", modificado.Tipo.Id);
+                datos.setearParametros("@idDebilidad", modificado.Debilidad.Id);
                 datos.setearParametros("@id", modificado.Id);
 
                 datos.ejecutarAccion();
@@ -223,7 +251,7 @@ namespace negocio
             catch (Exception ex)
             {
 
-                throw ex ;
+                throw ex;
             }
             finally
             {
@@ -355,7 +383,7 @@ namespace negocio
 
                 throw ex;
             }
-            finally 
+            finally
             {
                 datos.cerrarConexion();
             }

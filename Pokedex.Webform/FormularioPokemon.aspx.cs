@@ -14,23 +14,31 @@ namespace Pokedex.Webform
         protected void Page_Load(object sender, EventArgs e)
         {
             txtId.Enabled = false;
-            if (!IsPostBack)
+            try
             {
-                ElementoNegocio elementoNegocio = new ElementoNegocio();
-                List<Elemento> lista = elementoNegocio.listar();
+                if (!IsPostBack)
+                {
+                    ElementoNegocio elementoNegocio = new ElementoNegocio();
+                    List<Elemento> lista = elementoNegocio.listar();
 
-                ddlDebilidad.DataSource = lista;
-                ddlDebilidad.DataTextField = "Descripcion";
-                ddlDebilidad.DataValueField = "Id";
-                ddlDebilidad.DataBind();
+                    ddlDebilidad.DataSource = lista;
+                    ddlDebilidad.DataTextField = "Descripcion";
+                    ddlDebilidad.DataValueField = "Id";
+                    ddlDebilidad.DataBind();
 
-                //dropdownlist tipo
+                    //dropdownlist tipo
 
-                ddlTipo.DataSource = lista;
-                ddlTipo.DataTextField = "Descripcion";
-                ddlTipo.DataValueField = "Id";
-                ddlTipo.DataBind();
+                    ddlTipo.DataSource = lista;
+                    ddlTipo.DataTextField = "Descripcion";
+                    ddlTipo.DataValueField = "Id";
+                    ddlTipo.DataBind();
 
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
             }
         }
 
@@ -49,8 +57,8 @@ namespace Pokedex.Webform
                 nuevo.Debilidad = new Elemento();
                 nuevo.Debilidad.Id = int.Parse(ddlDebilidad.SelectedValue);
 
-                pokemonNegocio.agregar(nuevo);
-                Response.Redirect("PokemonsLista", false);
+                pokemonNegocio.agregarConSP(nuevo);
+                Response.Redirect("PokemonsLista.aspx", false);
             }
             catch (Exception)
             {
