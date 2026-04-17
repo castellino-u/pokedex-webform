@@ -15,7 +15,8 @@ namespace Pokedex.Webform
         {
             if (!IsPostBack)
             {
-                cargarDatos();
+                cargarDatosDesdeDB();
+                cargarGrid();
             }
 
         }
@@ -23,26 +24,26 @@ namespace Pokedex.Webform
         protected void dgvPokemons_SelectedIndexChanged(object sender, EventArgs e)
         {
             int id = int.Parse(dgvPokemons.SelectedDataKey.Value.ToString()); //esto es así porque yo quise parsearlo a int, pero sino no es necesario poner el int.parse, ya con solo lo demás podes tener el id en formato string
-            Response.Redirect("DetallePokemon.aspx?id=" + id);
+            Response.Redirect("FormularioPokemon.aspx?id=" + id);
         }
 
         protected void dgvPokemons_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             dgvPokemons.PageIndex = e.NewPageIndex;
-            cargarDatos(); //debo hacer esto porque no alcanza con solo bindear, debo volver a cargar el grid
+            cargarGrid();
+            
         }
 
-        private void cargarDatos()
+        private void cargarDatosDesdeDB()
         {
 
             PokemonNegocio pokemonNegocio = new PokemonNegocio();
+            Session["listaPokemons"] = pokemonNegocio.listarConSp();
+        }
 
-            //if (Session["listaPokemons"] == null )
-            //{
-            //    Session["listaPokemons"] = pokemonNegocio.listarConSp();
-            //}
-
-            dgvPokemons.DataSource = pokemonNegocio.listarConSp();
+        private void cargarGrid()
+        {
+            dgvPokemons.DataSource = Session["listaPokemons"];
             dgvPokemons.DataBind();
         }
     }

@@ -162,6 +162,8 @@ namespace negocio
 
         }
 
+        
+
 
         //acá creamos el método de agregar
         public void agregar(Pokemon nuevo)
@@ -260,6 +262,33 @@ namespace negocio
 
         }
 
+        public void modificarConSP(Pokemon modificado)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearProcedimiento("storedModificarPokemon");
+                datos.setearParametros("@numero", modificado.Numero);
+                datos.setearParametros("@nombre", modificado.Nombre);
+                datos.setearParametros("@desc", modificado.Descripcion);
+                datos.setearParametros("@img", modificado.UrlImagen);
+                datos.setearParametros("@idTipo", modificado.Tipo.Id);
+                datos.setearParametros("@idDebilidad", modificado.Debilidad.Id);
+                datos.setearParametros("@id", modificado.Id);
+
+                datos.ejecutarAccion();
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
         public void eliminar(int id)
         {
             try

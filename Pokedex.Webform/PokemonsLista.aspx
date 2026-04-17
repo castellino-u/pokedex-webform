@@ -18,7 +18,7 @@
                 ItemStyle-HorizontalAlign="Center" 
                 />
             <asp:BoundField HeaderText="Número" DataField="Numero" /> 
-            <asp:CommandField HeaderText="Acción" SelectText="✍️" ShowSelectButton="true" />
+            <asp:CommandField HeaderText="Modificar" SelectText="✍️" ShowSelectButton="true" />
         </Columns>
     </asp:GridView>
     <a href="FormularioPokemon.aspx" class="btn btn-primary">Agregar</a>

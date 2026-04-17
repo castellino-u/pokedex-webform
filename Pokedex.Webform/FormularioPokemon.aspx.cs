@@ -16,6 +16,7 @@ namespace Pokedex.Webform
             txtId.Enabled = false;
             try
             {
+                //configuración inicial
                 if (!IsPostBack)
                 {
                     ElementoNegocio elementoNegocio = new ElementoNegocio();
@@ -33,6 +34,25 @@ namespace Pokedex.Webform
                     ddlTipo.DataValueField = "Id";
                     ddlTipo.DataBind();
 
+
+                }
+                //Acá vamos a ver si atravez del querystring viene el id o no, en base a eso vamos a precargar los datos o no. 
+                if ((Request.QueryString["id"] != null) && (!IsPostBack))
+                {
+                    int id = int.Parse(Request.QueryString["id"]);
+                    List<Pokemon> temporal = (List<Pokemon>)Session["listaPokemons"];
+                    Pokemon seleccionado = temporal.Find(x => x.Id == id);
+
+
+                    txtId.Text = seleccionado.Id.ToString();
+                    txtNombre.Text = seleccionado.Nombre;
+                    txtNumero.Text = seleccionado.Numero.ToString();
+                    txtDescripcion.Text = seleccionado.Descripcion;
+                    txtImagenUrl.Text = seleccionado.UrlImagen;
+                    txtUrlImagen_TextChanged(sender, e);
+
+                    ddlTipo.SelectedValue = seleccionado.Tipo.Id.ToString();
+                    ddlDebilidad.SelectedValue = seleccionado.Debilidad.Id.ToString();
                 }
             }
             catch (Exception)
@@ -40,13 +60,18 @@ namespace Pokedex.Webform
 
                 throw;
             }
+
+
+
+
+
         }
 
         protected void btnAgregar_Click(object sender, EventArgs e)
         {
-            PokemonNegocio pokemonNegocio = new PokemonNegocio();
             try
             {
+                PokemonNegocio pokemonNegocio = new PokemonNegocio();
                 Pokemon nuevo = new Pokemon();
                 nuevo.Nombre = txtNombre.Text;
                 nuevo.Numero = int.Parse(txtNumero.Text);
@@ -57,7 +82,16 @@ namespace Pokedex.Webform
                 nuevo.Debilidad = new Elemento();
                 nuevo.Debilidad.Id = int.Parse(ddlDebilidad.SelectedValue);
 
-                pokemonNegocio.agregarConSP(nuevo);
+                if (Request.QueryString["id"] != null)
+                {
+                    nuevo.Id = int.Parse(txtId.Text);
+                    pokemonNegocio.modificarConSP(nuevo);
+                }
+                else
+                {
+                    pokemonNegocio.agregarConSP(nuevo);
+
+                }
                 Response.Redirect("PokemonsLista.aspx", false);
             }
             catch (Exception)
