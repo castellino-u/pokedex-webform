@@ -14,6 +14,8 @@ namespace Pokedex.Webform
         protected void Page_Load(object sender, EventArgs e)
         {
             txtId.Enabled = false;
+            btnEliminar.Visible = false;
+
             try
             {
                 //configuración inicial
@@ -39,6 +41,12 @@ namespace Pokedex.Webform
                 //Acá vamos a ver si atravez del querystring viene el id o no, en base a eso vamos a precargar los datos o no. 
                 if ((Request.QueryString["id"] != null) && (!IsPostBack))
                 {
+                    //Detalles que cambian un poco las cosas 
+                    //...
+                    btnAgregar.Text = "Modificar";
+                    btnEliminar.Visible = true;
+
+
                     int id = int.Parse(Request.QueryString["id"]);
                     List<Pokemon> temporal = (List<Pokemon>)Session["listaPokemons"];
                     Pokemon seleccionado = temporal.Find(x => x.Id == id);
@@ -49,11 +57,13 @@ namespace Pokedex.Webform
                     txtNumero.Text = seleccionado.Numero.ToString();
                     txtDescripcion.Text = seleccionado.Descripcion;
                     txtImagenUrl.Text = seleccionado.UrlImagen;
-                    txtUrlImagen_TextChanged(sender, e);
+                    txtUrlImagen_TextChanged(sender, e);  //podemos forzar el evento que carga la imagen o bien podríamos crear uno nuevo 
 
                     ddlTipo.SelectedValue = seleccionado.Tipo.Id.ToString();
                     ddlDebilidad.SelectedValue = seleccionado.Debilidad.Id.ToString();
                 }
+
+
             }
             catch (Exception)
             {
@@ -104,6 +114,25 @@ namespace Pokedex.Webform
         protected void txtUrlImagen_TextChanged(object sender, EventArgs e)
         {
             ImgPokemon.ImageUrl = txtImagenUrl.Text;
+        }
+
+        protected void btnEliminar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Request.QueryString["id"] != null)
+                {
+                    int id = int.Parse(Request.QueryString["id"]);
+                    PokemonNegocio negocio = new PokemonNegocio();
+                    negocio.eliminarConSP(id);
+                    Response.Redirect("PokemonsLista.aspx", false);
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
 }

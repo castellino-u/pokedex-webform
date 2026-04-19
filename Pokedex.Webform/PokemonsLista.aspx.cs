@@ -23,7 +23,7 @@ namespace Pokedex.Webform
 
         protected void dgvPokemons_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int id = int.Parse(dgvPokemons.SelectedDataKey.Value.ToString()); //esto es así porque yo quise parsearlo a int, pero sino no es necesario poner el int.parse, ya con solo lo demás podes tener el id en formato string
+            int id = (int)dgvPokemons.SelectedDataKey.Value; //esto es así porque yo quise parsearlo a int, pero sino no es necesario poner el int.parse, ya con solo lo demás podes tener el id en formato string
             Response.Redirect("FormularioPokemon.aspx?id=" + id);
         }
 
