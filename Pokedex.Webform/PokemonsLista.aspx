@@ -8,6 +8,7 @@
     <asp:GridView runat="server" ID="dgvPokemons" CssClass="table" AutoGenerateColumns="false" OnSelectedIndexChanged="dgvPokemons_SelectedIndexChanged" 
         DataKeyNames="Id" AllowPaging="true" PageSize="5" OnPageIndexChanging="dgvPokemons_PageIndexChanging" >
         <Columns>
+            <asp:CheckBoxField HeaderText="Activo" DataField="Estado" />        
             <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
             <asp:BoundField HeaderText="Tipo" DataField="Tipo.Descripcion" />
             <asp:ImageField

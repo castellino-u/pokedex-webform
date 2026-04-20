@@ -404,5 +404,26 @@ namespace negocio
 
             return lista;
         }
+
+        public void eliminarLogicoConSP(int id)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearProcedimiento("storedEliminarLogico");
+                datos.setearParametros("@id", id);
+                datos.ejecutarAccion();
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+
+            }
+        }
     }
 }

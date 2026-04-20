@@ -116,16 +116,27 @@ namespace Pokedex.Webform
             ImgPokemon.ImageUrl = txtImagenUrl.Text;
         }
 
+        //vamos a comentar la eliminación fisica para dejar solo la eliminación logica. De igual modo vamos a conservar la lógica para el futuro. Pero es solo cambiar el llamado del método, nada más 
+
         protected void btnEliminar_Click(object sender, EventArgs e)
         {
             try
             {
                 if (Request.QueryString["id"] != null)
                 {
+                    //Eliminado físico
+                    //int id = int.Parse(Request.QueryString["id"]);
+                    //PokemonNegocio negocio = new PokemonNegocio();
+                    //negocio.eliminarConSP(id);
+                    //Response.Redirect("PokemonsLista.aspx", false);
+
                     int id = int.Parse(Request.QueryString["id"]);
                     PokemonNegocio negocio = new PokemonNegocio();
-                    negocio.eliminarConSP(id);
+                    negocio.eliminarLogicoConSP(id);
                     Response.Redirect("PokemonsLista.aspx", false);
+
+
+
                 }
             }
             catch (Exception)
