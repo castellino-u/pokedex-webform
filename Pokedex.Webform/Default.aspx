@@ -34,7 +34,7 @@
         <%--Ahora vamos a probar una estructura nueva, un repetidor de asp--%>
         <asp:Repeater runat="server" ID="reRepetidor">
             <ItemTemplate>
-                <div class="col">
+                <div class="col" runat="server" visible='<%# (bool)Eval("Estado") %>'>
                     <div class="card">
                         <img src="<%#Eval("UrlImagen")%>" class="card-img-top w-50 m-auto" alt="...">
                         <div class="card-body">

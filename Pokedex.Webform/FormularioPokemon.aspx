@@ -61,11 +61,12 @@
         </div>
     </div>
     <div class="row justify-content-center align-content-center h-100">
-        <div class="col-4">
+        <div class="col-6">
             <div class="mb-3 text-center">
                 <asp:Button Text="Agregar" runat="server" ID="btnAgregar" CssClass="btn btn-primary" OnClick="btnAgregar_Click" />
                 <a href="PokemonsLista.aspx" class="btn btn-dark">Cancelar</a>
-                <asp:Button Text="Eliminar" ID="btnEliminar" CssClass="btn btn-danger" OnClick="btnEliminar_Click" runat="server" OnClientClick="return confirm('¿Seguro que querés eliminar este Pokémon?');"/>
+                <asp:Button Text="Eliminar Lógico" ID="btnEliminar" CssClass="btn btn-danger" OnClick="btnEliminar_Click" runat="server" OnClientClick="return confirm('¿Seguro que querés eliminar este Pokémon?');"/>
+                <asp:Button Text="Activar" runat="server" CssClass="btn btn-info" ID="btnActivar" OnClick="btnActivar_Click"/>
             </div>
 
         </div>

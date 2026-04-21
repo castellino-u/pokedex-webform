@@ -46,5 +46,46 @@ namespace Pokedex.Webform
             dgvPokemons.DataSource = Session["listaPokemons"];
             dgvPokemons.DataBind();
         }
+
+        protected void txtFiltroRapido_TextChanged(object sender, EventArgs e)
+        {
+            //pequeña validación para traer todos los elementos denuevo
+            if(txtFiltroRapido.Text == "")
+            {
+                cargarGrid();
+                return;
+            }
+            string nombre;
+            int numero;
+            List<Pokemon> listaFiltrada = new List<Pokemon>(); //lista nueva para agregar los nuevos elementos
+            List<Pokemon> lista = (List<Pokemon>)Session["listaPokemons"];
+
+            if (int.TryParse(txtFiltroRapido.Text, out numero))
+            {
+                //acá intentamos filtrar por número
+                listaFiltrada = lista.Where(x => x.Numero == numero).ToList();
+            }
+            else
+            {
+                nombre = txtFiltroRapido.Text.ToLower(); //lo paso todo a minúscula por las dudas
+                listaFiltrada = lista.FindAll( x => x.Nombre.ToLower().Contains(nombre));
+
+            }
+            //Primero vamos a armar un filtro rápido sobre nombres, luego sobre nombres y numeros, y luego sobre nombres, números o tipos 
+
+
+
+
+            //ahora filtraremos por números también 
+
+
+
+            //deberíamos limpíar el grid y cargarle la lista filtrada
+            dgvPokemons.DataSource = null;
+            dgvPokemons.DataSource = listaFiltrada;
+            dgvPokemons.DataBind();
+
+
+        }
     }
 }

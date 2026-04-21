@@ -15,6 +15,24 @@ namespace Pokedex.Webform
     {
 
         /// <summary>
+        /// txtFiltroRapido control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtFiltroRapido;
+
+        /// <summary>
+        /// div control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div;
+
+        /// <summary>
         /// dgvPokemons control.
         /// </summary>
         /// <remarks>

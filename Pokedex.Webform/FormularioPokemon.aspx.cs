@@ -15,7 +15,7 @@ namespace Pokedex.Webform
         {
             txtId.Enabled = false;
             btnEliminar.Visible = false;
-
+            btnActivar.Visible = false;
             try
             {
                 //configuración inicial
@@ -44,13 +44,19 @@ namespace Pokedex.Webform
                     //Detalles que cambian un poco las cosas 
                     //...
                     btnAgregar.Text = "Modificar";
-                    btnEliminar.Visible = true;
-
 
                     int id = int.Parse(Request.QueryString["id"]);
                     List<Pokemon> temporal = (List<Pokemon>)Session["listaPokemons"];
                     Pokemon seleccionado = temporal.Find(x => x.Id == id);
+                    if (!seleccionado.Estado)
+                    {
+                        btnActivar.Visible = true;
 
+                    }
+                    else
+                    {
+                        btnEliminar.Visible = true;
+                    }
 
                     txtId.Text = seleccionado.Id.ToString();
                     txtNombre.Text = seleccionado.Nombre;
@@ -137,6 +143,25 @@ namespace Pokedex.Webform
 
 
 
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        protected void btnActivar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if(Request.QueryString["id"] != null)
+                {
+                    int id = int.Parse(Request.QueryString["id"]);
+                    PokemonNegocio negocio = new PokemonNegocio();
+                    negocio.activarConSP(id);
+                    Response.Redirect("Default.aspx", false);
                 }
             }
             catch (Exception)
