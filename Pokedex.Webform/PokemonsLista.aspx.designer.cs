@@ -24,6 +24,15 @@ namespace Pokedex.Webform
         protected global::System.Web.UI.WebControls.TextBox txtFiltroRapido;
 
         /// <summary>
+        /// cbxFiltroAvanzado control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox cbxFiltroAvanzado;
+
+        /// <summary>
         /// div control.
         /// </summary>
         /// <remarks>
@@ -31,6 +40,42 @@ namespace Pokedex.Webform
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl div;
+
+        /// <summary>
+        /// ddlCampo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlCampo;
+
+        /// <summary>
+        /// ddlCriterio control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlCriterio;
+
+        /// <summary>
+        /// txtFiltroAvanzado control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtFiltroAvanzado;
+
+        /// <summary>
+        /// btnBuscar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnBuscar;
 
         /// <summary>
         /// dgvPokemons control.

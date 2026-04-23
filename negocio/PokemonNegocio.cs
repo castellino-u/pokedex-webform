@@ -325,7 +325,7 @@ namespace negocio
                     {
                         consulta += "P.Numero < " + filtro;
                     }
-                    else
+                    else if (campo == "Igual a")
                     {
                         consulta += "P.Numero = " + filtro;
                     }
@@ -340,7 +340,7 @@ namespace negocio
                     {
                         consulta += "P.Nombre like '%" + filtro + "'";
                     }
-                    else
+                    else if(criterio == "Contiene")
                     {
                         consulta += "P.Nombre like '%" + filtro + "%'";
                     }

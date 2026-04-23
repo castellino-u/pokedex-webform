@@ -87,5 +87,58 @@ namespace Pokedex.Webform
 
 
         }
+
+        protected void cbxFiltroAvanzado_CheckedChanged(object sender, EventArgs e)
+        {
+            div.Visible = cbxFiltroAvanzado.Checked;
+            if (cbxFiltroAvanzado.Checked)
+            {
+                ddlCampo.Items.Add(new ListItem("Seleccione...", ""));
+                ddlCampo.Items.Add("Número");
+                ddlCampo.Items.Add("Nombre");
+                ddlCampo.Items.Add("Tipo");
+
+            }
+        }
+
+        protected void ddlCampo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(ddlCampo.SelectedIndex == 0)
+            {
+                ddlCriterio.Items.Clear();
+            }
+            else if (ddlCampo.SelectedIndex == 1)
+            {
+                ddlCriterio.Items.Clear();
+                ddlCriterio.Items.Add("Mayor a");
+                ddlCriterio.Items.Add("Menor a");
+                ddlCriterio.Items.Add("Igual a");
+
+            }
+            else if (ddlCampo.SelectedIndex == 2)
+            {
+                ddlCriterio.Items.Clear();
+                ddlCriterio.Items.Add("Empieza con");
+                ddlCriterio.Items.Add("Termina con");
+                ddlCriterio.Items.Add("Contiene");
+
+            }
+            else if (ddlCampo.SelectedIndex == 3)
+            {
+                ddlCriterio.Items.Clear();
+                ElementoNegocio negocio = new ElementoNegocio();
+                List<Elemento> elementos = negocio.listar();
+                ddlCriterio.DataSource = null;
+                ddlCriterio.DataSource = elementos;
+                ddlCriterio.DataValueField = "Id";
+                ddlCriterio.DataTextField = "Descripcion";
+                ddlCriterio.DataBind();
+            }
+        }
+
+        protected void btnBuscar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
