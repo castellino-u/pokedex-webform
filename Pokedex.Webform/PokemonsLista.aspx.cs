@@ -11,12 +11,18 @@ namespace Pokedex.Webform
 {
     public partial class PokemonsLista : System.Web.UI.Page
     {
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 cargarDatosDesdeDB();
                 cargarGrid();
+
+                ElementoNegocio negocio = new ElementoNegocio();
+                List<Elemento> elementos = negocio.listar();
+                Session["elementos"] = elementos;
+
             }
 
         }
@@ -31,7 +37,7 @@ namespace Pokedex.Webform
         {
             dgvPokemons.PageIndex = e.NewPageIndex;
             cargarGrid();
-            
+
         }
 
         private void cargarDatosDesdeDB()
@@ -50,7 +56,7 @@ namespace Pokedex.Webform
         protected void txtFiltroRapido_TextChanged(object sender, EventArgs e)
         {
             //pequeña validación para traer todos los elementos denuevo
-            if(txtFiltroRapido.Text == "")
+            if (txtFiltroRapido.Text == "")
             {
                 cargarGrid();
                 return;
@@ -68,7 +74,7 @@ namespace Pokedex.Webform
             else
             {
                 nombre = txtFiltroRapido.Text.ToLower(); //lo paso todo a minúscula por las dudas
-                listaFiltrada = lista.FindAll( x => x.Nombre.ToLower().Contains(nombre));
+                listaFiltrada = lista.FindAll(x => x.Nombre.ToLower().Contains(nombre));
 
             }
             //Primero vamos a armar un filtro rápido sobre nombres, luego sobre nombres y numeros, y luego sobre nombres, números o tipos 
@@ -97,48 +103,83 @@ namespace Pokedex.Webform
                 ddlCampo.Items.Add("Número");
                 ddlCampo.Items.Add("Nombre");
                 ddlCampo.Items.Add("Tipo");
-
+            }
+            else
+            {
+                ddlCampo.Items.Clear();
             }
         }
 
         protected void ddlCampo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(ddlCampo.SelectedIndex == 0)
+            ddlCriterio.Items.Clear();
+            txtFiltroAvanzado.Enabled = true;
+            txtFiltroAvanzado.Text = "";
+
+            if (ddlCampo.SelectedItem.Text == "Seleccione...")
             {
-                ddlCriterio.Items.Clear();
+                txtFiltroAvanzado.Enabled = false;
+                return;
             }
-            else if (ddlCampo.SelectedIndex == 1)
+
+
+            if (ddlCampo.SelectedValue == "Número")
             {
-                ddlCriterio.Items.Clear();
+
                 ddlCriterio.Items.Add("Mayor a");
                 ddlCriterio.Items.Add("Menor a");
                 ddlCriterio.Items.Add("Igual a");
 
             }
-            else if (ddlCampo.SelectedIndex == 2)
+            else if (ddlCampo.SelectedValue == "Nombre")
             {
-                ddlCriterio.Items.Clear();
                 ddlCriterio.Items.Add("Empieza con");
                 ddlCriterio.Items.Add("Termina con");
                 ddlCriterio.Items.Add("Contiene");
 
             }
-            else if (ddlCampo.SelectedIndex == 3)
+            else if (ddlCampo.SelectedValue == "Tipo")
             {
-                ddlCriterio.Items.Clear();
-                ElementoNegocio negocio = new ElementoNegocio();
-                List<Elemento> elementos = negocio.listar();
-                ddlCriterio.DataSource = null;
-                ddlCriterio.DataSource = elementos;
-                ddlCriterio.DataValueField = "Id";
-                ddlCriterio.DataTextField = "Descripcion";
-                ddlCriterio.DataBind();
+                txtFiltroAvanzado.Enabled = false;
+                if (Session["elementos"] != null)
+                {
+                    ddlCriterio.DataSource = Session["elementos"];
+                    ddlCriterio.DataValueField = "Id";
+                    ddlCriterio.DataTextField = "Descripcion";
+                    ddlCriterio.DataBind();
+                }
             }
         }
 
         protected void btnBuscar_Click(object sender, EventArgs e)
         {
+            //Debemos capturar todos los datosde los sontroles y llamar al método filtrar
 
+            if (ddlCampo.SelectedValue == "Seleccione...")
+            {
+                return;
+            }
+
+           
+
+            PokemonNegocio negocio = new PokemonNegocio();
+            List<Pokemon> listaFiltrada;
+
+            string campo = ddlCampo.SelectedValue;
+            string criterio = ddlCriterio.SelectedValue;
+            string filtro = txtFiltroAvanzado.Text;
+
+            if (campo == "Tipo")
+            {
+                listaFiltrada = negocio.filtrar(campo, criterio);
+            }
+            else
+            {
+                listaFiltrada = negocio.filtrar(campo, criterio, filtro);
+            }
+
+            dgvPokemons.DataSource = listaFiltrada;
+            dgvPokemons.DataBind();
         }
     }
 }

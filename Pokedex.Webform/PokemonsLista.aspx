@@ -11,7 +11,9 @@
                 <label for="txtFiltroRapido" class="form-label">Filtro</label>
                 <asp:TextBox runat="server" ID="txtFiltroRapido" CssClass="form-control" OnTextChanged="txtFiltroRapido_TextChanged" AutoPostBack="true" />
             </div>
-            <div class="mb-3">
+        </div>
+        <div class="col-6">
+            <div class="mb-3 mt-5">
                 <asp:CheckBox Text=" Filtro avanzado" runat="server" CssClass="form-check" ID="cbxFiltroAvanzado" AutoPostBack="true" OnCheckedChanged="cbxFiltroAvanzado_CheckedChanged" />
             </div>
         </div>
@@ -40,7 +42,7 @@
         </div>
         <div class="col-3">
             <div class="mb-3">
-                <asp:Button Text="Buscar" runat="server" ID="btnBuscar" OnClick="btnBuscar_Click" CssClass="btn text-bg-primary mt-4"/>
+                <asp:Button Text="Buscar" runat="server" ID="btnBuscar" OnClick="btnBuscar_Click" CssClass="btn text-bg-primary mt-4" />
             </div>
         </div>
 

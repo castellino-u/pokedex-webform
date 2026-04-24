@@ -125,9 +125,6 @@ namespace negocio
             }
         }
 
-        
-
-
         //acá creamos el método de agregar
         public void agregar(Pokemon nuevo)
         {
@@ -306,7 +303,7 @@ namespace negocio
             }
         }
 
-        public List<Pokemon> filtrar(string campo, string criterio, string filtro)
+        public List<Pokemon> filtrar(string campo, string criterio, string filtro = "")
         {
             List<Pokemon> lista = new List<Pokemon>();
             AccesoDatos datos = new AccesoDatos();
@@ -347,20 +344,9 @@ namespace negocio
                 }
                 else
                 {
-                    if (campo == "Descripción")
+                    if (campo == "Tipo")
                     {
-                        if (criterio == "Empieza con")
-                        {
-                            consulta += "P.Descripcion like '" + filtro + "%'";
-                        }
-                        else if (criterio == "Termina con")
-                        {
-                            consulta += "P.Descripcion like '%" + filtro + "'";
-                        }
-                        else
-                        {
-                            consulta += "P.Descripcion like '%" + filtro + "%'";
-                        }
+                        consulta += "P.IdTipo = " + criterio;
                     }
                 }
 
