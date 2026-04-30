@@ -71,6 +71,9 @@
     <Content Include="DetallePokemon.aspx" />
     <Content Include="FormularioPokemon.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="Login.aspx" />
+    <Content Include="PageLogin.aspx" />
+    <Content Include="PageLoginAdmin.aspx" />
     <Content Include="PokemonsLista.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -99,12 +102,33 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
     <Compile Include="MasterPage.Master.cs">
       <DependentUpon>MasterPage.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="MasterPage.Master.designer.cs">
       <DependentUpon>MasterPage.Master</DependentUpon>
+    </Compile>
+    <Compile Include="PageLogin.aspx.cs">
+      <DependentUpon>PageLogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageLogin.aspx.designer.cs">
+      <DependentUpon>PageLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageLoginAdmin.aspx.cs">
+      <DependentUpon>PageLoginAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageLoginAdmin.aspx.designer.cs">
+      <DependentUpon>PageLoginAdmin.aspx</DependentUpon>
     </Compile>
     <Compile Include="PokemonsLista.aspx.cs">
       <DependentUpon>PokemonsLista.aspx</DependentUpon>
