@@ -17,6 +17,10 @@ namespace Pokedex.Webform
             {
                 lblError.Visible = false;
             }
+            if (Session["usuario"] != null)
+            {
+                Response.Redirect("Default.aspx", false);
+            }
 
         }
 
@@ -43,6 +47,7 @@ namespace Pokedex.Webform
                 UsuarioNegocio negocio = new UsuarioNegocio();
                 if (negocio.Loguear(nuevo))
                 {
+                    Session["usuario"] = nuevo; 
                     if (nuevo.TipoUsuario == TipoUsuario.ADMIN)
                     {
                         Response.Redirect("PageLoginAdmin.aspx", false);
