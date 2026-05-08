@@ -17,50 +17,36 @@ namespace negocio
 
         public EmailService()
         {
-            string usuario = ConfigurationManager.AppSettings["EmailUser"];
-            string password = ConfigurationManager.AppSettings["EmailPassword"];
-            string host = ConfigurationManager.AppSettings["EmailHost"];
-
-            int port = int.Parse(ConfigurationManager.AppSettings["EmailPort"]);
-
-
-
+            string usuario = Environment.GetEnvironmentVariable("EMAIL_USER");
+            string password = Environment.GetEnvironmentVariable("EMAIL_PASSWORD");
 
             server = new SmtpClient();
             server.Credentials = new NetworkCredential(usuario, password);
 
             server.EnableSsl = true;
-            server.Port = port;
-
-            server.Host = host;
+            server.Port = 587;
+            server.Host = "smtp.gmail.com";
         }
 
         public void armarCorreo(string emailUsuario, string asunto, string cuerpo)
         {
             email = new MailMessage();
-            email.From = new MailAddress(ConfigurationManager.AppSettings["EmailUser"]);
-            
-            //Yo recibo el mensaje
-            email.To.Add(ConfigurationManager.AppSettings["EmailUser"]); //acá va quién recibe el mail - yo en este caso en la dirección que ponga que quiero recibir el mensaje- en ese ejemplo lo recibo en  programationiii
-            
-            //Esto es para responderle aul usuario.
+            //Desde dónde va a salir el email, desde mi cuenta, mi correo
+            email.From = new MailAddress(Environment.GetEnvironmentVariable("EMAIL_USER"), "No Reply");
+
+            //Dónde se va a recibir el mensaje. En mi cuenta en este caso
+            email.To.Add(Environment.GetEnvironmentVariable("EMAIL_USER")); //acá va quién recibe el mail - yo en este caso en la dirección que ponga que quiero recibir el mensaje- en ese ejemplo lo recibo en  programationiii
+
+            //Esto es para responderle al usuario.
             email.ReplyToList.Add(emailUsuario);
             email.Subject = asunto;
             email.Body = $@"<p><strong>Email del usuario:</strong> {emailUsuario}</p><p>{cuerpo}</p>";
             email.IsBodyHtml = true;
         }
-        public void enviarEmail()
-
+        public void enviarCorreo()
         {
-            try
-            {
-                server.Send(email);
-            }
-            catch (Exception)
-            {
+            server.Send(email);
 
-                throw;
-            }
         }
 
     }
