@@ -27,14 +27,28 @@
                         <li class="nav-item">
                             <a class="nav-link" href="PokemonsLista.aspx">Lista Pokemons</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="Login.aspx">Login</a>
-                        </li>
+
                         <li class="nav-item">
                             <a class="nav-link" href="Contact.aspx">Contactanos</a>
                         </li>
                     </ul>
                 </div>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item btn btn-outline-success">
+                        <a class="nav-link" href="Login.aspx">Login</a>
+                    </li>
+                    <li class="nav-item btn btn btn-outline-primary">
+                        <a class="nav-link" href="Registrarse.aspx">Registrarse</a>
+                    </li>
+                    <li class="nav-item d-flex align-items-center">
+                        <img src="imagenes/user.jpg"
+                            class="rounded-circle"
+                            width="35"
+                            height="35" />
+
+                        <a class="nav-link" href="#">Uriel</a>
+                    </li>
+                </ul>
             </div>
         </nav>
 

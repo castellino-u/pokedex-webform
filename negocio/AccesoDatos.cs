@@ -9,9 +9,7 @@ namespace negocio
 {
     public class AccesoDatos
     {
-        //para establecer una conexión necesitamos 3 cosas, establecer una cadena de conexión
-        //establecer un comando
-        //y un objeto slq data reader
+        //para establecer una conexión necesitamos 3 cosas, establecer una cadena de conexión, un comando y un objeto slq data reader
 
 
         private SqlConnection conexion;
@@ -19,7 +17,7 @@ namespace negocio
         private SqlDataReader lector;
 
         //vamos a crear otra property para que podamos acceder en este caso a la propiedad de lectura, la prop va a 
-        //service igual al lector pero en este caso, esta prop me va a permitir leer desde el exterior a mi lector privado
+        //servir igual al lector pero en este caso, esta prop me va a permitir leer desde el exterior a mi lector privado
         //por eso solo va a tener un get y no un setter
 
         public SqlDataReader Lector
@@ -27,9 +25,7 @@ namespace negocio
             get { return lector; }
         }
 
-        //definimos un constructor qu en este caso incluya al momento de crear una instancia de la clase, haga la 
-        //conexión
-
+        //definimos un constructor que en este caso incluya al momento de crear una instancia de la clase, la cadena conexión
         public AccesoDatos()
         {
             conexion = new SqlConnection("server=.\\SQLEXPRESS; Initial Catalog=POKEDEX_DB; integrated security=true;  ");
