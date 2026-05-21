@@ -28,16 +28,17 @@ namespace Pokedex.Webform
             try
             {
                 EmailService negocio = new EmailService();
-                negocio.armarCorreo(txtEmail.Text, txtAsunto.Text, txtCuerpo.Text);
+                negocio.armarCorreoContacto(txtEmail.Text, txtAsunto.Text, txtCuerpo.Text);
 
                 negocio.enviarCorreo();
                 lblConfirmacion.Text = "Mensaje enviado correctamente";
                 lblConfirmacion.Visible = true;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                lblConfirmacion.Text = "error al enviar correo, reintente más tarde";
+                lblConfirmacion.Text = "Error al enviar correo. Reintente más tarde";
                 lblConfirmacion.Visible = true;
+                System.Diagnostics.Debug.WriteLine(ex.ToString());
             }
 
             //falta modificar las credenciales, activar la verificacion de dos pasos y la app password y listo, esto funciona.

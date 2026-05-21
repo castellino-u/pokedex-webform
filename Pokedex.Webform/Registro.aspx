@@ -5,7 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <div class="row justify-content-center mt-4">
-        <div class="col-4">
+        <div class="col-6">
         <h2>Registro Trainee</h2>
             <div class="mb-3">
                 <label for="txtEmail" class="form-label">Email</label>

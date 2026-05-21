@@ -34,13 +34,13 @@
                     </ul>
                 </div>
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item btn btn-outline-success">
+                    <li class="nav-item btn btn-outline-success m-1">
                         <a class="nav-link" href="Login.aspx">Login</a>
                     </li>
-                    <li class="nav-item btn btn btn-outline-primary">
-                        <a class="nav-link" href="Registrarse.aspx">Registrarse</a>
+                    <li class="nav-item btn btn btn-outline-primary m-1">
+                        <a class="nav-link" href="Registro.aspx">Registrarse</a>
                     </li>
-                    <li class="nav-item d-flex align-items-center">
+                    <li class="nav-item d-flex align-items-center m-1">
                         <img src="imagenes/user.jpg"
                             class="rounded-circle"
                             width="35"

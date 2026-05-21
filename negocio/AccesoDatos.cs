@@ -80,6 +80,15 @@ namespace negocio
             }
         }
 
+        //ejecutar acción y que me retorne un elemento, por eso el scalar
+        public int ejecutarAccionScalar()
+        {
+            comando.Connection = conexion;
+            conexion.Open();
+            return (int)comando.ExecuteScalar();
+
+        }
+
         //setear parametros al comando
 
         public void setearParametros(string nombre, object valor)
