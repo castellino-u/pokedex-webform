@@ -18,6 +18,8 @@ namespace negocio
         public EmailService()
         {
             //usaré los servidores smtp de mailtrap, por ende modificaré un poco la configuración
+            //esta config corresponde a los servidores de gmail
+            //...
             //string usuario = Environment.GetEnvironmentVariable("EMAIL_USER");
             //string password = Environment.GetEnvironmentVariable("EMAIL_PASSWORD");
 
@@ -29,12 +31,13 @@ namespace negocio
             //server.Host = "smtp.gmail.com";
 
             //Config para mailtrap
+            //...
             string usuario = Environment.GetEnvironmentVariable("EMAIL_USER");
             string password = Environment.GetEnvironmentVariable("EMAIL_PASSWORD");
             //ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
             server = new SmtpClient();
-            server.Credentials = new NetworkCredential("fee15c0024439b", "f70aa09fc5b912");
+            server.Credentials = new NetworkCredential(usuario,password );
 
             server.EnableSsl = true;
             server.Port = 2525;
