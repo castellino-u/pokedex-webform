@@ -17,10 +17,7 @@ namespace Pokedex.Webform
             {
                 lblError.Visible = false;
             }
-            if (Session["usuario"] != null)
-            {
-                Response.Redirect("Default.aspx", false);
-            }
+            
 
         }
 
@@ -37,18 +34,19 @@ namespace Pokedex.Webform
                 return;
             }
 
+            Trainee nuevo = new Trainee();
+            TraineeNegocio negocio = new TraineeNegocio();
 
             try
             {
-                Usuario nuevo = new Usuario();
-                nuevo.User = txtEmail.Text;
+
+                nuevo.Email = txtEmail.Text;
                 nuevo.Pass = txtPass.Text;
 
-                UsuarioNegocio negocio = new UsuarioNegocio();
-                if (negocio.Loguear(nuevo))
+                if (negocio.Login(nuevo))
                 {
-                    Session["usuario"] = nuevo; 
-                    if (nuevo.TipoUsuario == TipoUsuario.ADMIN)
+                    Session["usuario"] = nuevo;
+                    if (nuevo.Admin)
                     {
                         Response.Redirect("PageLoginAdmin.aspx", false);
                     }
@@ -56,6 +54,7 @@ namespace Pokedex.Webform
                     {
                         Response.Redirect("PageLogin.aspx", false);
                     }
+                    Response.Redirect("MiPerfil.aspx", false);
                 }
                 else
                 {
@@ -70,11 +69,16 @@ namespace Pokedex.Webform
             catch (Exception ex)
             {
                 //Acá lo muestro 
-                lblError.Text = "Ocurrió un error al iniciar sesión";
+                //lblError.Text = "Ocurrió un error al iniciar sesión";
+                lblError.Text = ex.ToString();
                 lblError.Visible = true;
 
                 Session["error"] = ex.Message;
             }
+
+            //----------------------------------------------------------------------------------------
         }
+
+
     }
 }

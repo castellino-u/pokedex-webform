@@ -8,15 +8,21 @@ using dominio;
 
 namespace Pokedex.Webform
 {
-    public partial class MasterPage : System.Web.UI.MasterPage
+    public partial class MiPerfil : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["usuario"] != null)
+            if (!IsPostBack)
+            {
+
+            }
+            if (Session["usuario"] == null)
+            {
+                Response.Redirect("Login.aspx", false);
+            }
+            else
             {
                 Trainee trainee = (Trainee)Session["usuario"];
-                linkPerfil.Visible = true;
-                linkFavoritos.Visible = true;
             }
         }
     }

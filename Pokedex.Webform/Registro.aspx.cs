@@ -45,6 +45,7 @@ namespace Pokedex.Webform
                 user.Id = Id;
                 emailService.armarCorreoRegistro(user.Email);
                 emailService.enviarCorreo();
+                Session["usuario"] = user;
                 Response.Redirect("Default.aspx", false);
 
             }
