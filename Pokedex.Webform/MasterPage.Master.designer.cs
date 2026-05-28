@@ -33,6 +33,15 @@ namespace Pokedex.Webform
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
+        /// linkListaPokemons control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink linkListaPokemons;
+
+        /// <summary>
         /// linkFavoritos control.
         /// </summary>
         /// <remarks>

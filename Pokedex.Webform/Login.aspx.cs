@@ -54,7 +54,7 @@ namespace Pokedex.Webform
                     {
                         Response.Redirect("PageLogin.aspx", false);
                     }
-                    Response.Redirect("MiPerfil.aspx", false);
+                    
                 }
                 else
                 {
