@@ -61,18 +61,37 @@
                 </div>
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item btn btn-outline-success m-1">
-                        <a class="nav-link" href="Login.aspx">Login</a>
+                        <asp:HyperLink 
+                            NavigateUrl="~/Login.aspx"
+                            runat="server"
+                            ID="linkLogin"
+                            Text="Login"
+                            Visible="true"
+                            CssClass="nav-link"/>
+                        <asp:Button Text="Salir" runat="server" Visible="false" ID="btnSalir" OnClick="btnSalir_Click" CssClass="nav-link"/>
                     </li>
-                    <li class="nav-item btn btn btn-outline-primary m-1">
-                        <a class="nav-link" href="Registro.aspx">Registrarse</a>
+                    <li class="nav-item btn btn btn-outline-primary m-1" runat="server" ID="controlHTML">
+                        <asp:HyperLink 
+                            NavigateUrl="~/Registro.aspx" 
+                            runat="server"
+                            ID="linkRegistro"
+                            Text="Registrarse"
+                            Visible="true"
+                            CssClass="nav-link"/>
                     </li>
                     <li class="nav-item d-flex align-items-center m-1">
-                        <img src="imagenes/user.jpg"
-                            class="rounded-circle"
-                            width="35"
-                            height="35" />
+                        
+                        <asp:Image 
+                            Cssclass="rounded-circle"
+                            ID="imgAvatar"
+                            runat="server" 
+                            Visible="false"
+                            Width="35px"
+                            Height="35px"
+                            
+                            />
 
-                        <a class="nav-link" href="#"></a>
+                        <a class="nav-link" href="MiPerfil.aspx"></a>
                     </li>
                 </ul>
             </div>

@@ -23,12 +23,13 @@ namespace Pokedex.Webform
                 {
                     Response.Redirect("Login.aspx", false);
                 }
+
             }
-            
+
 
             //If que maneja la UI - ¿Qué se muestra? 
             //...
-            if (Session["usuario"] != null)
+            if (Seguridad.sessionActiva(Session["usuario"]))
             {
                 Trainee trainee = (Trainee)Session["usuario"];
                 linkPerfil.Visible = true;
@@ -37,8 +38,31 @@ namespace Pokedex.Webform
                 {
                     linkListaPokemons.Visible = true;
                 }
+
+
+                linkLogin.Visible = false;
+                linkRegistro.Visible = false;
+                btnSalir.Visible = true;
+                controlHTML.Visible = false; // esto es para que el espacio tampoco se dibuje
+
+                //Avatar
+                if (!string.IsNullOrWhiteSpace(trainee.ImagenPerfil))
+                {
+                    imgAvatar.ImageUrl = "~/Images/" + trainee.ImagenPerfil;
+                }
+                else
+                {
+                    imgAvatar.ImageUrl = "https://png.pngtree.com/png-vector/20250512/ourmid/pngtree-default-avatar-profile-icon-gray-placeholder-vector-png-image_16213764.png";
+                }
+                imgAvatar.Visible = true;
             }
 
+        }
+
+        protected void btnSalir_Click(object sender, EventArgs e)
+        {
+            Session.Clear();
+            Response.Redirect("Login.aspx", false);
         }
     }
 }

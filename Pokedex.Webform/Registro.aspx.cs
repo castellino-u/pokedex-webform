@@ -22,7 +22,7 @@ namespace Pokedex.Webform
 
         protected void btnRegistrarse_Click(object sender, EventArgs e)
         {
-            if (txtEmail.Text == "" || txtRepetirPassword.Text == "")
+            if (txtEmail.Text == "" || txtRepetirPassword.Text == "" || txtPass.Text == "")
             {
                 return;
             }
@@ -43,10 +43,11 @@ namespace Pokedex.Webform
 
                 int Id = negocio.insertarNuevo(user);
                 user.Id = Id;
+                Session["usuario"] = user;
+
                 emailService.armarCorreoRegistro(user.Email);
                 emailService.enviarCorreo();
-                Session["usuario"] = user;
-                Response.Redirect("Default.aspx", false);
+                Response.Redirect("MiPerfil.aspx", false);
 
             }
             catch (Exception ex)
