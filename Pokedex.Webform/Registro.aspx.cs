@@ -22,6 +22,8 @@ namespace Pokedex.Webform
 
         protected void btnRegistrarse_Click(object sender, EventArgs e)
         {
+            //Validación de campos
+            //...
             if (txtEmail.Text == "" || txtRepetirPassword.Text == "" || txtPass.Text == "")
             {
                 return;
@@ -38,6 +40,7 @@ namespace Pokedex.Webform
                 Trainee user = new Trainee();
                 TraineeNegocio negocio = new TraineeNegocio();
                 EmailService emailService = new EmailService();
+                //Capturamos los datos del front
                 user.Email = txtEmail.Text;
                 user.Pass = txtRepetirPassword.Text;
 
@@ -47,6 +50,7 @@ namespace Pokedex.Webform
 
                 emailService.armarCorreoRegistro(user.Email);
                 emailService.enviarCorreo();
+
                 Response.Redirect("MiPerfil.aspx", false);
 
             }
