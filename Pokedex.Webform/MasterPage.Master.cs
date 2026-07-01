@@ -43,12 +43,14 @@ namespace Pokedex.Webform
                 linkLogin.Visible = false;
                 linkRegistro.Visible = false;
                 btnSalir.Visible = true;
-                controlHTML.Visible = false; // esto es para que el espacio tampoco se dibuje
+                controlHTML.Visible = false; // esto es para que el espacio donde van los botones, tampoco se dibuje tampoco se dibuje
 
                 //Avatar
                 if (!string.IsNullOrWhiteSpace(trainee.ImagenPerfil))
                 {
-                    imgAvatar.ImageUrl = "~/Images/" + trainee.ImagenPerfil;
+                    string ruta = Server.MapPath("~/Images/" + trainee.ImagenPerfil);
+                    long version = System.IO.File.GetLastWriteTimeUtc(ruta).Ticks;
+                    imgAvatar.ImageUrl = "~/Images/" + trainee.ImagenPerfil + "?v=" + version;
                 }
                 else
                 {

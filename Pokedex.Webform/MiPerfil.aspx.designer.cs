@@ -60,6 +60,24 @@ namespace Pokedex.Webform
         protected global::System.Web.UI.WebControls.TextBox txtFechaNacimiento;
 
         /// <summary>
+        /// btnConfirmarDatos control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnConfirmarDatos;
+
+        /// <summary>
+        /// btnCancelarDatos control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCancelarDatos;
+
+        /// <summary>
         /// txtImagen control.
         /// </summary>
         /// <remarks>
@@ -78,6 +96,24 @@ namespace Pokedex.Webform
         protected global::System.Web.UI.WebControls.Image imgNuevoPerfil;
 
         /// <summary>
+        /// btnConfirmarFoto control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnConfirmarFoto;
+
+        /// <summary>
+        /// btnCancelarFoto control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCancelarFoto;
+
+        /// <summary>
         /// btnEditarFoto control.
         /// </summary>
         /// <remarks>
@@ -94,14 +130,5 @@ namespace Pokedex.Webform
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnEditarDatos;
-
-        /// <summary>
-        /// btnGuardar control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnGuardar;
     }
 }

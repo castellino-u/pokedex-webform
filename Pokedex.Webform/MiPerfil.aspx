@@ -27,6 +27,11 @@
                 <asp:TextBox runat="server" CssClass="form-control" ID="txtFechaNacimiento" TextMode="date" />
 
             </div>
+            <div class="mb-3">
+                <%--Acá van los botones para confirmar o cancelar la edición de los datos--%>
+                <asp:Button Text="Confirmar" runat="server" ID="btnConfirmarDatos" CssClass="btn btn-primary" Visible="false" OnClick="btnConfirmarDatos_Click" />
+                <asp:Button Text="Cancelar" runat="server" ID="btnCancelarDatos" CssClass="btn btn-dark" Visible="false" OnClick="btnCancelarDatos_Click" />
+            </div>
         </div>
 
         <div class="col-md-4">
@@ -34,6 +39,12 @@
                 <label for="txtImagen" class="form-label">Imagen Perfil</label>
                 <input type="file" class="form-control" id="txtImagen" runat="server">
                 <asp:Image ImageUrl="https://impactify.io/wp-content/uploads/2024/05/placeholder-5.png" runat="server" ID="imgNuevoPerfil" CssClass="img-fluid mb-3" />
+                <%--//Acá deben ir los botones para confirmar o cancelar la edición de las fotos --%>
+                
+            </div>
+            <div class="mb-3 gap-2">
+                <asp:Button Text="Confirmar" runat="server" ID="btnConfirmarFoto" CssClass="btn btn-primary" Visible="false" OnClick="btnConfirmarFoto_Click"/>
+                <asp:Button Text="Cancelar" runat="server" ID="btnCancelarFoto" CssClass="btn btn-dark" Visible="false" OnClick="btnCancelarFoto_Click"/>
             </div>
         </div>
         <div class="col-md-4 ">
@@ -41,8 +52,6 @@
                 <asp:Button Text="Editar Foto" ID="btnEditarFoto" OnClick="btnEditarFoto_Click" CssClass="btn btn-primary"  runat="server" />
 
                 <asp:Button Text="Editar datos" ID="btnEditarDatos" OnClick="btnEditarDatos_Click" CssClass="btn btn-primary" runat="server" />
-
-                <asp:Button Text="Guardar" runat="server" ID="btnGuardar" CssClass="btn btn-primary" OnClick="btnGuardar_Click" Visible="false" />
 
                 <a href="Default.aspx" class="btn btn-dark">Regresar</a>
 

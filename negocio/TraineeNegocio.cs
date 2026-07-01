@@ -85,16 +85,15 @@ namespace negocio
 
         }
 
-        public void actualizar(Trainee user)
+        public void actualizarDatos(Trainee user)
         {
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("Update  Users set Nombre = @nombre, Apellido =@apellido, FechaNacimiento = @fechaNacimiento, ImagenPerfil = @imagenPerfil Where Id = @id");
+                datos.setearConsulta("Update  Users set Nombre = @nombre, Apellido =@apellido, FechaNacimiento = @fechaNacimiento Where Id = @id");
                 datos.setearParametros("@nombre", user.Nombre);
                 datos.setearParametros("@apellido", user.Apellido);
                 datos.setearParametros("@fechaNacimiento", user.FechaNacimiento);
-                datos.setearParametros("@imagenPerfil", user.ImagenPerfil);
                 datos.setearParametros("@id", user.Id);
 
                 datos.ejecutarAccion();
@@ -113,5 +112,25 @@ namespace negocio
 
 
         }
+
+        public void actualizarFoto(Trainee user)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("update USERS set ImagenPerfil = @img where Id = @id");
+                datos.setearParametros("@img", user.ImagenPerfil);
+                datos.setearParametros("@id", user.Id);
+
+                datos.ejecutarAccion();
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+        }
+
+
     }
 }

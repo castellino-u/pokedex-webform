@@ -68,7 +68,13 @@
                             Text="Login"
                             Visible="true"
                             CssClass="nav-link"/>
-                        <asp:Button Text="Salir" runat="server" Visible="false" ID="btnSalir" OnClick="btnSalir_Click" CssClass="nav-link"/>
+
+                        <asp:Button Text="Salir" 
+                            runat="server" 
+                            Visible="false" 
+                            ID="btnSalir" 
+                            OnClick="btnSalir_Click" 
+                            CssClass="nav-link"/>
                     </li>
                     <li class="nav-item btn btn btn-outline-primary m-1" runat="server" ID="controlHTML">
                         <asp:HyperLink 
