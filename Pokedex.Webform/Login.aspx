@@ -8,6 +8,7 @@
             <div class="mb-3">
                 <label for="txtEmail" class="form-label">Email</label>
                 <asp:TextBox runat="server" ID="txtEmail" CssClass="form-control" />
+                <asp:RequiredFieldValidator ErrorMessage="Debe ingresar un email" ControlToValidate="txtEmail" runat="server" />
                 <div id="emailHelp" class="form-text">Nunca vamos a compartir tu email con cualquier otra persona.</div>
             </div>
             <div class="mb-3">

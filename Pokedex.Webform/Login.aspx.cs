@@ -25,14 +25,14 @@ namespace Pokedex.Webform
         {
             
 
-            if (txtEmail.Text == "")
-            {
-                return;
-            }
-            if (txtPass.Text == "")
-            {
-                return;
-            }
+            //if (txtEmail.Text == "")
+            //{
+            //    return;
+            //}
+            //if (txtPass.Text == "")
+            //{
+            //    return;
+            //}
 
             Trainee nuevo = new Trainee();
             TraineeNegocio negocio = new TraineeNegocio();

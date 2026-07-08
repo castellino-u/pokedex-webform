@@ -37,6 +37,12 @@ namespace Pokedex.Webform
             
             try
             {
+                //Cortamos la ejecición si las validaciones fallan
+                Page.Validate();
+                if (!Page.IsValid)
+                {
+                    return;
+                }
                 Trainee user = new Trainee();
                 TraineeNegocio negocio = new TraineeNegocio();
                 EmailService emailService = new EmailService();
