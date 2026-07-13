@@ -25,5 +25,19 @@ namespace Pokedex.Webform
                 LoadSuccessExpression = "window.jQuery"
             });
         }
+
+        void Application_Error(object sender, EventArgs e)
+        {
+            Exception ex = Server.GetLastError();
+
+            // Guardar en un log
+            //Logger.Log(ex);
+
+            // Limpiar el error
+            //Server.ClearError();
+
+            // Redirigir
+            Response.Redirect("~/Error.aspx");
+        }
     }
 }

@@ -8,16 +8,16 @@
         <div class="col-6 mt-4">
             <div class="mb-3">
                 <label for="txtEmail" class="form-label">Email</label>
-                <asp:TextBox runat="server" type="email" CssClass="form-control" ID="txtEmail" />
+                <asp:TextBox runat="server" type="email" CssClass="form-control" ID="txtEmail" required />
                 <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
             </div>
             <div class="mb-3">
                 <label for="txtAsunto" class="form-label">Asunto</label>
-                <asp:TextBox runat="server" ID="txtAsunto" CssClass="form-control" />
+                <asp:TextBox runat="server" ID="txtAsunto" CssClass="form-control" required />
             </div>
             <div class="mb-3">
                 <label class="form-label" for="txtCuerpo">Mensaje</label>
-                <asp:TextBox runat="server" ID="txtCuerpo" TextMode="MultiLine" CssClass="form-control" />
+                <asp:TextBox runat="server" ID="txtCuerpo" TextMode="MultiLine" CssClass="form-control" required />
 
             </div>
             <asp:Button Text="Enviar" runat="server" ID="btnEnviar" CssClass="btn btn-primary" OnClick="btnEnviar_Click" />
